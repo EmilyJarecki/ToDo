@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "./components/Header";
-import routes from "./config/routes";
+import React from "react"
+import Header from "./components/Header"
+import routes from "./config/routes"
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Header />
       {routes}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
