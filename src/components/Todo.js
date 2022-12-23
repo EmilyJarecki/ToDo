@@ -12,7 +12,7 @@ const Todo = (props)=>{
   const toggleBodyForm = () => {
     formStyle.display === 'block'
     ? setFormStyle({ display: 'none'} )
-    : setFormStyle({ display: 'block'} )
+    : setFormStyle({ display: 'display'} )
   }
 
     return (

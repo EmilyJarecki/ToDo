@@ -5,15 +5,15 @@ const TodoForm = (props) => {
   const [todo, setTodo] = useState(props.todo.body)
 
   const onChange = (e) => {
-      setTodo(e.target.value)
+      setTodo(e.target.value)  
   }
 
   const onSubmit = (e) => {
+    props.toggleBodyForm();
     e.preventDefault();
     const updatedTodo = {...props.todo, body: todo};
     props.updateTodo(updatedTodo);
     setTodo('')
-    props.toggleBodyForm();
   };
 
 
@@ -23,7 +23,7 @@ const TodoForm = (props) => {
           <input
             onChange={onChange}
             type="text" id="newItemDescription"
-            placeholder="What do you need to do?"
+            placeholder="Do you need to update this?"
             value={todo}
           />
           <button type="submit" id="addTask" className="btn">Edit Todo</button>
