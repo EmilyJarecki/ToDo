@@ -7,7 +7,7 @@ const Todo = (props)=>{
     props.deleteTodo(props.todo)
   }
 
-  const [formStyle, setFormStyle] = useState({display: 'none'})
+  const [formStyle, setFormStyle] = useState({display: 'display'})
 
   const toggleBodyForm = () => {
     formStyle.display === 'block'

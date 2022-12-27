@@ -6,6 +6,8 @@ const TodoForm = (props) => {
 
   const onChange = (e) => {
       setTodo(e.target.value)  
+
+
   }
 
   const onSubmit = (e) => {
@@ -23,10 +25,10 @@ const TodoForm = (props) => {
           <input
             onChange={onChange}
             type="text" id="newItemDescription"
-            placeholder="Do you need to update this?"
+            placeholder="Edit here"
             value={todo}
           />
-          <button type="submit" id="addTask" className="btn">Edit Todo</button>
+          <button type="submit" id="addTask" className="btn">Update</button>
         </form>
       </div>
     );
