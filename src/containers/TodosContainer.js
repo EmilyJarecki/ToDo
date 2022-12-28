@@ -7,10 +7,9 @@ const TodosContainer = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    TodoModel.all().then((res) => {
-      console.log(res);
-      setTodos(res.data);
-    });
+    TodoModel.all()
+      .then((res) => setTodos(res.data))
+      .catch((err) => console.error);
   }, [todos.length]);
 
   const createTodo = (todo) => {
@@ -18,13 +17,13 @@ const TodosContainer = () => {
       body: todo,
       completed: false,
     };
-
     TodoModel.create(newTodo).then((res) => {
       let currenttodos = todos.slice();
       currenttodos.push(res.data);
       setTodos(currenttodos);
     });
   };
+
   const deleteTodo = (todo) => {
     TodoModel.delete(todo).then((res) => {
       let filteredTodos = todos.filter((todo) => {
@@ -33,14 +32,14 @@ const TodosContainer = () => {
       setTodos(filteredTodos);
     });
   };
+
   const updateTodo = (todo) => {
     const isUpdatedTodo = (t) => {
       return t._id === todo._id;
     };
-    console.log(todo);
     TodoModel.update(todo).then((res) => {
       let newTodos = todos.slice();
-      todos.find(isUpdatedTodo).body = todo.body;
+      newTodos.find(isUpdatedTodo).body = todo.body;
       setTodos(newTodos);
     });
   };

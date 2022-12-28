@@ -2,17 +2,17 @@ import React, {useState} from "react"
 import TodoForm from './TodoForm'
 
 const Todo = (props)=>{
+  const [formStyle, setFormStyle] = useState({display: 'display'})
 
   const deleteClickedTodo = () => {
     props.deleteTodo(props.todo)
   }
 
-  const [formStyle, setFormStyle] = useState({display: 'display'})
-
+  
   const toggleBodyForm = () => {
     formStyle.display === 'block'
     ? setFormStyle({ display: 'none'} )
-    : setFormStyle({ display: 'display'} )
+    : setFormStyle({ display: 'block'} )
   }
 
     return (

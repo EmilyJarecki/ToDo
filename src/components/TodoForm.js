@@ -2,33 +2,31 @@ import React, { useState } from 'react';
 
 
 const TodoForm = (props) => {
-  const [todo, setTodo] = useState(props.todo.body)
+  const [todo, setTodo] = useState(props.todo)
 
   const onChange = (e) => {
-      setTodo(e.target.value)  
+    setTodo({...todo, body: e.target.value})
+};
 
+const onSubmit = (e) => {
+  e.preventDefault();
+  props.updateTodo(todo);
+  setTodo({...todo})
+  props.toggleBodyForm();
+};
 
-  }
-
-  const onSubmit = (e) => {
-    props.toggleBodyForm();
-    e.preventDefault();
-    const updatedTodo = {...props.todo, body: todo};
-    props.updateTodo(updatedTodo);
-    setTodo('')
-  };
 
 
     return (
-      <div>
+      <div style={props.style}>
         <form onSubmit={onSubmit} id="taskForm">
           <input
             onChange={onChange}
             type="text" id="newItemDescription"
-            placeholder="Edit here"
-            value={todo}
+            placeholder="What do you need to do?"
+            value={todo.body}
           />
-          <button type="submit" id="addTask" className="btn">Update</button>
+          <button type="submit" id="updateTask" className="btn">{props.buttonName}</button>
         </form>
       </div>
     );
